@@ -1,0 +1,888 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABC Online Book Store</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f7f8fc;
+    color: #222;
+}
+
+/* NAVBAR */
+header {
+    background: #101d3a;
+    color: white;
+    padding: 15px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 35px;
+}
+
+.logo h2 {
+    font-size: 21px;
+}
+
+.logo p {
+    font-size: 11px;
+    color: #cbd5e1;
+    margin-top: 4px;
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #ffc83d;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-box {
+    padding: 10px;
+    width: 165px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.cart {
+    background: #ffc83d;
+    color: #101d3a;
+    padding: 10px 14px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* HERO */
+.hero {
+    min-height: 430px;
+    padding: 65px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    color: white;
+    background:
+      linear-gradient(90deg, rgba(9,20,45,.96), rgba(9,20,45,.75)),
+      url("https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1800&q=85");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content .welcome {
+    color: #ffc83d;
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(35px, 5vw, 55px);
+    line-height: 1.15;
+    margin-bottom: 18px;
+}
+
+.hero h1 span {
+    color: #ffc83d;
+}
+
+.hero p {
+    line-height: 1.8;
+    color: #e2e8f0;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: #ffc83d;
+    color: #101d3a;
+    text-decoration: none;
+    padding: 13px 23px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+}
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.book-cover {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 65px;
+    color: white;
+}
+
+@media(max-width: 1000px) {
+    .book-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.btn:hover {
+    background: #ffad18;
+    transform: translateY(-3px);
+}
+
+.hero-art {
+    text-align: center;
+    min-width: 220px;
+}
+
+.book-stack {
+    font-size: 90px;
+    filter: drop-shadow(0 10px 12px #0008);
+}
+
+.hero-art p {
+    background: #ffffffdd;
+    color: #17213b;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* COMMON SECTION */
+section {
+    padding: 55px 7%;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    gap: 15px;
+}
+
+.section-heading h2 {
+    font-size: 28px;
+    color: #152342;
+}
+
+.view-all {
+    color: #5540b8;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* CATEGORIES */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+}
+
+.category-card {
+    padding: 25px 10px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.category-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 8px 20px #0002;
+}
+
+.category-card .emoji {
+    font-size: 38px;
+    margin-bottom: 13px;
+}
+
+.category-card h3 {
+    font-size: 15px;
+    margin-bottom: 9px;
+}
+
+.category-card p {
+    color: #555;
+    font-size: 12px;
+}
+
+.cat1 { background: #e6e9ff; }
+.cat2 { background: #e1f5ed; }
+.cat3 { background: #fff0d9; }
+.cat4 { background: #f9e4f2; }
+.cat5 { background: #e0f2fb; }
+.cat6 { background: #f2e9ff; }
+
+/* BOOKS */
+.books-section {
+    background: white;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.book-card {
+    background: white;
+    border: 1px solid #e6e8ef;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px #0002;
+}
+
+.book-cover {
+    height: 205px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 75px;
+    color: white;
+}
+
+.cover1 { background: linear-gradient(135deg, #173e67, #3187a9); }
+.cover2 { background: linear-gradient(135deg, #8d3e2c, #e89b51); }
+.cover3 { background: linear-gradient(135deg, #283b69, #7389c5); }
+.cover4 { background: linear-gradient(135deg, #275d47, #72a77d); }
+
+.book-info {
+    padding: 17px;
+}
+
+.book-info h3 {
+    color: #17213b;
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+.author {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.rating {
+    color: #f5a623;
+    margin-bottom: 12px;
+}
+
+.price {
+    font-size: 19px;
+    color: #17213b;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+.old-price {
+    color: #999;
+    font-size: 13px;
+    text-decoration: line-through;
+    font-weight: normal;
+    margin-left: 6px;
+}
+
+.add-btn {
+    width: 100%;
+    background: #182b50;
+    color: white;
+    padding: 11px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.add-btn:hover {
+    background: #5540b8;
+}
+
+/* OFFER */
+.offer {
+    margin: 55px 7%;
+    border-radius: 16px;
+    padding: 45px 7%;
+    background: linear-gradient(120deg, #5d36a9, #a34ac2, #ed70a0);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.offer h2 {
+    font-size: 32px;
+    margin: 12px 0;
+}
+
+.offer p {
+    margin-bottom: 20px;
+}
+
+.offer-art {
+    font-size: 85px;
+}
+
+/* ABOUT */
+.about {
+    text-align: center;
+    background: #f0f3fa;
+}
+
+.about h2 {
+    color: #17213b;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.about p {
+    max-width: 750px;
+    margin: auto;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* FOOTER */
+footer {
+    background: #101d3a;
+    color: white;
+    padding: 45px 7% 15px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-grid h3 {
+    color: #ffc83d;
+    margin-bottom: 15px;
+}
+
+.footer-grid p,
+.footer-grid a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.footer-grid a:hover {
+    color: #ffc83d;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #34415d;
+    padding-top: 18px;
+    color: #cbd5e1;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 1000px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 650px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .header-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero {
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .hero-art {
+        display: none;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 23px;
+    }
+
+    .offer {
+        text-align: center;
+        justify-content: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <div class="logo">
+        <div class="logo-icon">📚</div>
+        <div>
+            <h2>ABC College of Technology</h2>
+            <p>Knowledge | Innovation | Excellence</p>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#categories">Categories</a>
+        <a href="#books">Books</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <div class="header-right">
+        <input class="search-box" type="text" id="searchInput"
+               placeholder="Search books...">
+        <div class="cart">🛒 <span id="cartCount">0</span></div>
+    </div>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="home">
+    <div class="hero-content">
+        <div class="welcome">⭐ Welcome to</div>
+        <h1>ABC Online <span>Book Store</span></h1>
+        <p>
+            Discover your favourite books from different categories
+            including Technology, Programming, Fiction, Business
+            and Education. Start your learning journey with us!
+        </p>
+        <a href="#books" class="btn">Explore Books →</a>
+    </div>
+
+    <div class="hero-art">
+        <div class="book-stack">📚</div>
+        <p>BOOKS MAKE A BETTER YOU</p>
+    </div>
+</div>
+
+<!-- CATEGORIES -->
+<section id="categories">
+    <div class="section-heading">
+        <h2>📚 Book Categories</h2>
+        <a href="#books" class="view-all">View All →</a>
+    </div>
+
+    <div class="category-grid">
+        <div class="category-card cat1" onclick="filterCategory('Programming')">
+            <div class="emoji">💻</div>
+            <h3>Programming</h3>
+            <p>Explore Now →</p>
+        </div>
+
+        <div class="category-card cat2" onclick="filterCategory('Computer Science')">
+            <div class="emoji">🖥️</div>
+            <h3>Computer Science</h3>
+            <p>Explore Now →</p>
+        </div>
+
+        <div class="category-card cat3" onclick="filterCategory('Business')">
+            <div class="emoji">💼</div>
+            <h3>Business</h3>
+            <p>Explore Now →</p>
+        </div>
+
+        <div class="category-card cat4" onclick="filterCategory('Fiction')">
+            <div class="emoji">📖</div>
+            <h3>Fiction</h3>
+            <p>Explore Now →</p>
+        </div>
+
+        <div class="category-card cat5" onclick="filterCategory('Competitive Exams')">
+            <div class="emoji">🎓</div>
+            <h3>Competitive Exams</h3>
+            <p>Explore Now →</p>
+        </div>
+
+        <div class="category-card cat6" onclick="filterCategory('Web Development')">
+            <div class="emoji">🌐</div>
+            <h3>Web Development</h3>
+            <p>Explore Now →</p>
+        </div>
+    </div>
+</section>
+
+<!-- POPULAR BOOKS -->
+<section class="books-section" id="books">
+    <div class="section-heading">
+        <h2>📚 Our 50+ Popular Books</h2>
+        <a href="#books" class="view-all" onclick="showAllBooks()">View All →</a>
+    </div>
+
+    <div class="book-grid" id="bookGrid"></div>
+
+    <p id="noResults" style="display:none;text-align:center;padding:20px;">
+        No books found!
+    </p>
+</section>
+
+    <div class="book-grid" id="bookGrid">
+
+        <div class="book-card" data-category="Programming">
+            <div class="book-cover cover1">🐍</div>
+            <div class="book-info">
+                <h3>Python Programming</h3>
+                <p class="author">By John Smith</p>
+                <div class="rating">★★★★★ <span style="color:#555">4.6</span></div>
+                <div class="price">₹450 <span class="old-price">₹600</span></div>
+                <button class="add-btn" onclick="addToCart('Python Programming')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+        </div>
+
+        <div class="book-card" data-category="Web Development">
+            <div class="book-cover cover2">🌐</div>
+            <div class="book-info">
+                <h3>Web Technology</h3>
+                <p class="author">By David Brown</p>
+                <div class="rating">★★★★★ <span style="color:#555">4.5</span></div>
+                <div class="price">₹500 <span class="old-price">₹700</span></div>
+                <button class="add-btn" onclick="addToCart('Web Technology')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+        </div>
+
+        <div class="book-card" data-category="Computer Science">
+            <div class="book-cover cover3">🗄️</div>
+            <div class="book-info">
+                <h3>Database Management</h3>
+                <p class="author">By Robert Lee</p>
+                <div class="rating">★★★★★ <span style="color:#555">4.7</span></div>
+                <div class="price">₹650 <span class="old-price">₹800</span></div>
+                <button class="add-btn" onclick="addToCart('Database Management')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+        </div>
+
+        <div class="book-card" data-category="Programming">
+            <div class="book-cover cover4">☕</div>
+            <div class="book-info">
+                <h3>Java Programming</h3>
+                <p class="author">By James Gosling</p>
+                <div class="rating">★★★★★ <span style="color:#555">4.6</span></div>
+                <div class="price">₹550 <span class="old-price">₹700</span></div>
+                <button class="add-btn" onclick="addToCart('Java Programming')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <p id="noResults" style="display:none;text-align:center;margin-top:25px;">
+        No books found!
+    </p>
+</section>
+
+<!-- OFFER -->
+<div class="offer">
+    <div>
+        <h3>🎉 Special Offer!</h3>
+        <h2>Get 20% Discount on Selected Books!</h2>
+        <p>Grab your favourite books at amazing prices.</p>
+        <a href="#books" class="btn">Shop Now →</a>
+    </div>
+    <div class="offer-art">🎁 📚</div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <h2>About ABC Online Book Store</h2>
+    <p>
+        ABC Online Book Store is a student-friendly online platform
+        where readers can explore books from different categories.
+        Our goal is to make knowledge and education easily accessible
+        to everyone. Discover, learn and grow with the power of books.
+    </p>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+    <div class="footer-grid">
+
+        <div>
+            <h3>📍 Contact Us</h3>
+            <p>ABC College of Technology</p>
+            <p>Jaipur, Rajasthan, India</p>
+            <p>Email: info@abccollege.com</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <p><a href="#home">Home</a></p>
+            <p><a href="#about">About Us</a></p>
+            <p><a href="#categories">Categories</a></p>
+            <p><a href="#books">Books</a></p>
+        </div>
+
+        <div>
+            <h3>Follow Us</h3>
+            <p><a href="#">📘 Facebook</a></p>
+            <p><a href="#">📸 Instagram</a></p>
+            <p><a href="#">▶️ YouTube</a></p>
+            <p><a href="#">💼 LinkedIn</a></p>
+        </div>
+
+        <div>
+            <h3>ABC College</h3>
+            <p>Knowledge | Innovation | Excellence</p>
+            <p>Designed by</p>
+            <p><strong>Rahul Kumar Sharma ❤️</strong></p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 ABC College of Technology | All Rights Reserved
+    </div>
+</footer>
+
+<script>
+let cartCount = 0;
+
+const books = [
+    ["Python Programming", "John Smith", 450, "Programming", "🐍"],
+    ["Web Technology", "David Brown", 500, "Web Development", "🌐"],
+    ["Database Management", "Robert Lee", 650, "Computer Science", "🗄️"],
+    ["Java Programming", "James Gosling", 550, "Programming", "☕"],
+    ["C Programming", "Dennis Ritchie", 350, "Programming", "💻"],
+    ["C++ Programming", "Bjarne Stroustrup", 400, "Programming", "⚙️"],
+    ["JavaScript Basics", "Mark Smith", 420, "Web Development", "📜"],
+    ["HTML and CSS", "Jon Duckett", 480, "Web Development", "🎨"],
+    ["React JS Guide", "Alex Banks", 600, "Web Development", "⚛️"],
+    ["Node JS", "Ryan Dahl", 520, "Web Development", "🟢"],
+
+    ["Operating System", "Galvin", 550, "Computer Science", "🖥️"],
+    ["Computer Networks", "Andrew Tanenbaum", 620, "Computer Science", "🌍"],
+    ["Data Structures", "Narasimha Karumanchi", 450, "Programming", "🌳"],
+    ["Algorithms", "Thomas Cormen", 750, "Programming", "🧮"],
+    ["Software Engineering", "Ian Sommerville", 580, "Computer Science", "🛠️"],
+    ["Artificial Intelligence", "Stuart Russell", 700, "Computer Science", "🤖"],
+    ["Machine Learning", "Tom Mitchell", 650, "Computer Science", "🧠"],
+    ["Cloud Computing", "Rajkumar Buyya", 590, "Computer Science", "☁️"],
+    ["Cyber Security", "William Stallings", 620, "Computer Science", "🔐"],
+    ["Computer Fundamentals", "P.K. Sinha", 300, "Computer Science", "💻"],
+
+    ["Business Management", "Peter Drucker", 450, "Business", "💼"],
+    ["Marketing Management", "Philip Kotler", 550, "Business", "📈"],
+    ["Financial Accounting", "T.S. Grewal", 400, "Business", "💰"],
+    ["Business Communication", "Meenakshi Raman", 350, "Business", "📞"],
+    ["Entrepreneurship", "Robert Hisrich", 480, "Business", "🚀"],
+    ["Rich Dad Poor Dad", "Robert Kiyosaki", 299, "Business", "💵"],
+    ["Think and Grow Rich", "Napoleon Hill", 250, "Business", "📊"],
+    ["The Psychology of Money", "Morgan Housel", 320, "Business", "💸"],
+    ["Atomic Habits", "James Clear", 399, "Business", "📘"],
+    ["The 7 Habits", "Stephen Covey", 450, "Business", "⭐"],
+
+    ["The Alchemist", "Paulo Coelho", 299, "Fiction", "📖"],
+    ["Harry Potter", "J.K. Rowling", 499, "Fiction", "🪄"],
+    ["Wings of Fire", "A.P.J. Abdul Kalam", 350, "Fiction", "🔥"],
+    ["The Great Gatsby", "F. Scott Fitzgerald", 280, "Fiction", "🎭"],
+    ["Pride and Prejudice", "Jane Austen", 300, "Fiction", "🌹"],
+    ["The Jungle Book", "Rudyard Kipling", 250, "Fiction", "🐯"],
+    ["Malgudi Days", "R.K. Narayan", 320, "Fiction", "📚"],
+    ["The Secret Garden", "Frances Hodgson", 270, "Fiction", "🌻"],
+    ["Around the World", "Jules Verne", 350, "Fiction", "🌎"],
+    ["Treasure Island", "R.L. Stevenson", 290, "Fiction", "🏝️"],
+
+    ["General Knowledge", "Lucent Publication", 250, "Competitive Exams", "📝"],
+    ["Quantitative Aptitude", "R.S. Aggarwal", 450, "Competitive Exams", "🔢"],
+    ["Reasoning Ability", "R.S. Aggarwal", 400, "Competitive Exams", "🧩"],
+    ["English Grammar", "Wren and Martin", 350, "Competitive Exams", "🔤"],
+    ["Indian Polity", "M. Laxmikanth", 650, "Competitive Exams", "🇮🇳"],
+    ["Indian History", "Bipin Chandra", 500, "Competitive Exams", "🏛️"],
+    ["Geography of India", "Majid Husain", 450, "Competitive Exams", "🗺️"],
+    ["General Science", "Lucent Publication", 300, "Competitive Exams", "🔬"],
+    ["Computer Awareness", "Arihant Experts", 280, "Competitive Exams", "💻"],
+    ["Current Affairs", "Competition Team", 199, "Competitive Exams", "📰"]
+];
+
+// Generate all 50 product cards
+function displayBooks(list) {
+    const grid = document.getElementById("bookGrid");
+
+    grid.innerHTML = "";
+
+    document.getElementById("noResults").style.display =
+        list.length === 0 ? "block" : "none";
+
+    list.forEach((book, index) => {
+        const [name, author, price, category, emoji] = book;
+
+        const oldPrice = Math.round(price * 1.25);
+
+        const card = document.createElement("div");
+        card.className = "book-card";
+        card.dataset.category = category;
+
+        const cover = document.createElement("div");
+        cover.className = "book-cover cover" + ((index % 4) + 1);
+        cover.textContent = emoji;
+
+        const info = document.createElement("div");
+        info.className = "book-info";
+
+        const title = document.createElement("h3");
+        title.textContent = name;
+
+        const authorText = document.createElement("p");
+        authorText.className = "author";
+        authorText.textContent = "By " + author;
+
+        const categoryText = document.createElement("p");
+        categoryText.className = "author";
+        categoryText.textContent = category;
+
+        const rating = document.createElement("div");
+        rating.className = "rating";
+        rating.textContent = "★★★★★";
+
+        const priceText = document.createElement("div");
+        priceText.className = "price";
+        priceText.textContent = "₹" + price + " ";
+
+        const old = document.createElement("span");
+        old.className = "old-price";
+        old.textContent = "₹" + oldPrice;
+        priceText.appendChild(old);
+
+        const button = document.createElement("button");
+        button.className = "add-btn";
+        button.textContent = "Add to Cart 🛒";
+        button.addEventListener("click", () => addToCart(name));
+
+        info.append(title, authorText, categoryText, rating, priceText, button);
+        card.append(cover, info);
+        grid.appendChild(card);
+    });
+}
+
+// Add to cart
+function addToCart(name) {
+    cartCount++;
+    document.getElementById("cartCount").textContent = cartCount;
+    alert(name + " added to your cart!");
+}
+
+// Search books
+document.getElementById("searchInput").addEventListener("input", function() {
+    const value = this.value.toLowerCase();
+
+    const filtered = books.filter(book =>
+        book[0].toLowerCase().includes(value) ||
+        book[1].toLowerCase().includes(value)
+    );
+
+    displayBooks(filtered);
+});
+
+// Category filter
+function filterCategory(category) {
+    const filtered = books.filter(book => book[3] === category);
+    displayBooks(filtered);
+    document.getElementById("searchInput").value = "";
+    document.getElementById("books").scrollIntoView();
+}
+
+// Show all products
+function showAllBooks() {
+    document.getElementById("searchInput").value = "";
+    displayBooks(books);
+}
+
+// Load all products when page opens
+displayBooks(books);
+</script>

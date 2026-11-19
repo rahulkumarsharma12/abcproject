@@ -1,0 +1,1202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Department of Computer Science | XYZ University</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+:root {
+    --primary: #2563eb;
+    --secondary: #06b6d4;
+    --dark: #0f172a;
+    --light: #f1f5f9;
+    --muted: #64748b;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.96);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.07);
+    backdrop-filter: blur(12px);
+}
+
+.top-bar {
+    background: var(--dark);
+    color: white;
+    padding: 8px 7%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.main-header {
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 13px;
+    background: linear-gradient(135deg,var(--primary),var(--secondary));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.logo-icon:hover {
+    transform: rotate(-8deg) scale(1.08);
+}
+
+.logo h1 {
+    font-size: 19px;
+    color: var(--dark);
+}
+
+.logo p {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #334155;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    transition: 0.3s;
+}
+
+nav a:not(.apply-btn)::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    left: 0;
+    bottom: -6px;
+    background: var(--primary);
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.apply-btn {
+    background: var(--primary);
+    color: white;
+    padding: 10px 17px;
+    border-radius: 8px;
+}
+
+.apply-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-3px);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    padding: 70px 7%;
+    background:
+        linear-gradient(90deg,rgba(15,23,42,.95),rgba(15,23,42,.65)),
+        url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=85");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 730px;
+    color: white;
+    animation: fadeUp 1s ease both;
+}
+
+.hero-label {
+    display: inline-block;
+    background: rgba(37,99,235,.25);
+    border: 1px solid rgba(255,255,255,.3);
+    color: #bfdbfe;
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: 58px;
+    line-height: 1.12;
+    margin-bottom: 20px;
+}
+
+.hero h2 span {
+    color: #60a5fa;
+}
+
+.hero p {
+    font-size: 17px;
+    color: #e2e8f0;
+    max-width: 620px;
+    margin-bottom: 28px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.primary-btn,
+.outline-btn {
+    display: inline-block;
+    padding: 13px 23px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.primary-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(37,99,235,.3);
+}
+
+.outline-btn {
+    border: 1px solid white;
+    color: white;
+}
+
+.outline-btn:hover {
+    background: white;
+    color: var(--dark);
+    transform: translateY(-4px);
+}
+
+/* STATS */
+
+.stats {
+    max-width: 1100px;
+    margin: -50px auto 0;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    overflow: hidden;
+}
+
+.stat {
+    text-align: center;
+    padding: 25px;
+    border-right: 1px solid #e2e8f0;
+    transition: .3s;
+}
+
+.stat:hover {
+    background: #eff6ff;
+}
+
+.stat h3 {
+    color: var(--primary);
+    font-size: 29px;
+}
+
+.stat p {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* COMMON SECTION */
+
+.section {
+    padding: 85px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title small {
+    color: var(--primary);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.section-title h2 {
+    color: var(--dark);
+    font-size: 36px;
+    margin-top: 8px;
+}
+
+.section-title p {
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+/* ABOUT */
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+    align-items: center;
+}
+
+.about-image {
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(15,23,42,.12);
+}
+
+.about-image img {
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    display: block;
+    transition: .5s;
+}
+
+.about-image:hover img {
+    transform: scale(1.06);
+}
+
+.about-content small {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.about-content h2 {
+    font-size: 37px;
+    line-height: 1.2;
+    margin: 12px 0 20px;
+    color: var(--dark);
+}
+
+.about-content p {
+    color: var(--muted);
+    margin-bottom: 15px;
+}
+
+.check-list {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.check-list li {
+    margin-bottom: 12px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.check-list li:hover {
+    color: var(--primary);
+    transform: translateX(5px);
+}
+
+.check-list li::before {
+    content: "✓";
+    color: var(--primary);
+    margin-right: 10px;
+}
+
+/* COURSES */
+
+.courses-section {
+    background: linear-gradient(135deg,#eff6ff,#f8fafc);
+}
+
+.course-toolbar {
+    max-width: 1100px;
+    margin: 0 auto 30px;
+}
+
+.search-box {
+    width: 100%;
+    padding: 15px 18px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    background: white;
+    transition: .3s;
+}
+
+.search-box:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37,99,235,.1);
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.filter-btn {
+    border: 1px solid #cbd5e1;
+    background: white;
+    padding: 9px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    color: #334155;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.course-count {
+    text-align: center;
+    color: var(--muted);
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.course-grid {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.course-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 23px 19px;
+    box-shadow: 0 5px 18px rgba(15,23,42,.05);
+    transition: .3s;
+    animation: fadeUp .5s ease both;
+}
+
+.course-card:hover {
+    transform: translateY(-7px);
+    border-color: #93c5fd;
+    box-shadow: 0 14px 30px rgba(37,99,235,.12);
+}
+
+.course-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dbeafe;
+    font-size: 23px;
+    margin-bottom: 15px;
+    transition: .3s;
+}
+
+.course-card:hover .course-icon {
+    transform: rotate(8deg) scale(1.1);
+    background: #bfdbfe;
+}
+
+.course-card h3 {
+    font-size: 17px;
+    color: var(--dark);
+    margin-bottom: 7px;
+}
+
+.course-card p {
+    font-size: 13px;
+    color: var(--muted);
+    min-height: 42px;
+}
+
+.course-category {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 5px 10px;
+    background: #eff6ff;
+    color: var(--primary);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.no-results {
+    display: none;
+    text-align: center;
+    color: var(--muted);
+    padding: 35px;
+    grid-column: 1/-1;
+}
+
+/* FACULTY */
+
+.faculty-grid {
+    max-width: 1050px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+.faculty-card {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 17px;
+    box-shadow: 0 5px 25px rgba(0,0,0,.06);
+    border: 1px solid #e2e8f0;
+    transition: .3s;
+}
+
+.faculty-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(37,99,235,.12);
+}
+
+.faculty-photo {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    margin: auto auto 18px;
+    background: #dbeafe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    border: 4px solid #eff6ff;
+}
+
+.faculty-card h3 {
+    color: var(--dark);
+}
+
+.designation {
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.specialization {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* NOTICES */
+
+.notice-section {
+    background: #eff6ff;
+}
+
+.notice-container {
+    max-width: 950px;
+    margin: auto;
+}
+
+.notice {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 25px;
+    background: white;
+    border-radius: 12px;
+    border-left: 5px solid var(--primary);
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.04);
+    transition: .3s;
+}
+
+.notice:hover {
+    transform: translateX(6px);
+}
+
+.notice-number {
+    min-width: 38px;
+    height: 38px;
+    background: #dbeafe;
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* CONTACT */
+
+.contact-section {
+    background: var(--dark);
+    color: white;
+}
+
+.contact-section .section-title h2 {
+    color: white;
+}
+
+.contact-section .section-title p {
+    color: #94a3b8;
+}
+
+.contact-grid {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.contact-card {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid #334155;
+    transition: .3s;
+}
+
+.contact-card:hover {
+    transform: translateY(-7px);
+    border-color: #60a5fa;
+    background: #26364e;
+}
+
+.contact-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.contact-card p {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #020617;
+    color: white;
+    padding: 28px 7%;
+    text-align: center;
+}
+
+footer p {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+footer span {
+    color: #60a5fa;
+    font-weight: bold;
+}
+
+/* BACK TO TOP */
+
+.top-button {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(37,99,235,.3);
+    transition: .3s;
+    z-index: 500;
+}
+
+.top-button:hover {
+    transform: translateY(-5px);
+    background: #1d4ed8;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1050px) {
+    .course-grid {
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    .main-header {
+        flex-direction: column;
+    }
+}
+
+@media(max-width:750px) {
+    .top-bar {
+        display: none;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h2 {
+        font-size: 43px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2,1fr);
+        margin: -30px 5% 0;
+    }
+
+    .stat:nth-child(2) {
+        border-right: none;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .course-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .faculty-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 65px 6%;
+    }
+}
+
+@media(max-width:480px) {
+    .logo h1 {
+        font-size: 16px;
+    }
+
+    .hero h2 {
+        font-size: 35px;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title h2 {
+        font-size: 29px;
+    }
+
+    .about-content h2 {
+        font-size: 30px;
+    }
+
+    .notice {
+        align-items: flex-start;
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="top-bar">
+        <span>XYZ University</span>
+        <span>Department of Computer Science</span>
+    </div>
+
+    <div class="main-header">
+        <div class="logo">
+            <div class="logo-icon">CS</div>
+            <div>
+                <h1>Department of Computer Science</h1>
+                <p>XYZ University • Jaipur, Rajasthan</p>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#courses">Courses</a>
+            <a href="#faculty">Faculty</a>
+            <a href="#notices">Notices</a>
+            <a href="#contact">Contact</a>
+            <a href="#courses" class="apply-btn">Explore Courses</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <div class="hero-label">DEPARTMENT OF COMPUTER SCIENCE</div>
+
+        <h2>
+            Building the
+            <span>Technology Leaders</span>
+            of Tomorrow
+        </h2>
+
+        <p>
+            Explore modern computer science education, learn new
+            technologies and develop the skills required for the
+            digital future.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#courses" class="primary-btn">Explore 50 Courses →</a>
+            <a href="#about" class="outline-btn">Discover Department</a>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+    <div class="stat">
+        <h3>50+</h3>
+        <p>Learning Courses</p>
+    </div>
+    <div class="stat">
+        <h3>20+</h3>
+        <p>Faculty Members</p>
+    </div>
+    <div class="stat">
+        <h3>500+</h3>
+        <p>Students</p>
+    </div>
+    <div class="stat">
+        <h3>10+</h3>
+        <p>Years of Excellence</p>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+    <div class="about">
+        <div class="about-image">
+            <img
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=85"
+                alt="Computer Science Students">
+        </div>
+
+        <div class="about-content">
+            <small>ABOUT OUR DEPARTMENT</small>
+            <h2>Excellence in Computer Science Education</h2>
+
+            <p>
+                The Department of Computer Science at XYZ University
+                is committed to providing students with a strong
+                foundation in computer science and emerging technologies.
+            </p>
+
+            <p>
+                Our academic environment encourages innovation,
+                research, collaboration and practical learning.
+            </p>
+
+            <ul class="check-list">
+                <li>Industry-oriented curriculum</li>
+                <li>Experienced faculty members</li>
+                <li>Practical and project-based learning</li>
+                <li>Research and innovation opportunities</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 50 COURSES -->
+<section id="courses" class="section courses-section">
+
+    <div class="section-title">
+        <small>OUR LEARNING PROGRAMS</small>
+        <h2>Explore 50 Courses</h2>
+        <p>Discover programming, AI, web development and many more technologies.</p>
+    </div>
+
+    <div class="course-toolbar">
+
+        <input
+            type="text"
+            id="courseSearch"
+            class="search-box"
+            placeholder="🔍 Search your favourite course..."
+        >
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="All">All Courses</button>
+            <button class="filter-btn" data-category="Programming">Programming</button>
+            <button class="filter-btn" data-category="Web Development">Web Development</button>
+            <button class="filter-btn" data-category="AI & Data Science">AI & Data Science</button>
+            <button class="filter-btn" data-category="Database">Database</button>
+            <button class="filter-btn" data-category="Networking">Networking</button>
+            <button class="filter-btn" data-category="Other">Other</button>
+        </div>
+
+        <div class="course-count" id="courseCount">
+            Showing 50 courses
+        </div>
+    </div>
+
+    <div class="course-grid" id="courseGrid">
+        <div class="no-results" id="noResults">
+            No courses found. Try another search.
+        </div>
+    </div>
+</section>
+
+<!-- FACULTY -->
+<section id="faculty" class="section">
+    <div class="section-title">
+        <small>OUR FACULTY</small>
+        <h2>Meet Our Faculty</h2>
+        <p>Experienced educators guiding the next generation.</p>
+    </div>
+
+    <div class="faculty-grid">
+        <div class="faculty-card">
+            <div class="faculty-photo">👨‍🏫</div>
+            <h3>Dr. Amit Sharma</h3>
+            <div class="designation">Professor</div>
+            <div class="specialization">Artificial Intelligence</div>
+        </div>
+
+        <div class="faculty-card">
+            <div class="faculty-photo">👩‍🏫</div>
+            <h3>Dr. Neha Verma</h3>
+            <div class="designation">Associate Professor</div>
+            <div class="specialization">Data Science</div>
+        </div>
+
+        <div class="faculty-card">
+            <div class="faculty-photo">👨‍💻</div>
+            <h3>Mr. Rahul Singh</h3>
+            <div class="designation">Assistant Professor</div>
+            <div class="specialization">Computer Networks</div>
+        </div>
+    </div>
+</section>
+
+<!-- NOTICES -->
+<section id="notices" class="section notice-section">
+    <div class="section-title">
+        <small>STUDENT INFORMATION</small>
+        <h2>Important Notices</h2>
+        <p>Stay updated with the latest department announcements.</p>
+    </div>
+
+    <div class="notice-container">
+        <div class="notice">
+            <div class="notice-number">01</div>
+            <p>Mid-term examinations will begin from <strong>15 September.</strong></p>
+        </div>
+
+        <div class="notice">
+            <div class="notice-number">02</div>
+            <p>Students must submit their assignments before the deadline.</p>
+        </div>
+
+        <div class="notice">
+            <div class="notice-number">03</div>
+            <p>Registration for the seminar is now open.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact-section">
+    <div class="section-title">
+        <small>GET IN TOUCH</small>
+        <h2>Contact Department</h2>
+        <p>We are here to help with your academic queries.</p>
+    </div>
+
+    <div class="contact-grid">
+        <div class="contact-card">
+            <div class="contact-icon">📍</div>
+            <h3>Address</h3>
+            <p>
+                Department of Computer Science<br>
+                XYZ University<br>
+                Jaipur, Rajasthan
+            </p>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-icon">✉️</div>
+            <h3>Email</h3>
+            <p>cs@xyzuniversity.edu</p>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-icon">🎓</div>
+            <h3>University</h3>
+            <p>XYZ University<br>Jaipur, Rajasthan</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>
+        © 2026 XYZ University — Department of Computer Science.
+        All Rights Reserved.
+    </p>
+    <p>Designed & Developed by <span>Rahul Kumar Sharma</span></p>
+</footer>
+
+<button class="top-button" id="topButton" title="Back to top">↑</button>
+
+<script>
+/* 50 COURSE DETAILS */
+
+const courses = [
+    // PROGRAMMING (1-10)
+    {name:"C Programming",category:"Programming",icon:"💻",desc:"Learn programming fundamentals using C language."},
+    {name:"C++ Programming",category:"Programming",icon:"⚙️",desc:"Learn object-oriented programming with C++."},
+    {name:"Java Programming",category:"Programming",icon:"☕",desc:"Build applications using Java."},
+    {name:"Python Programming",category:"Programming",icon:"🐍",desc:"Learn Python from basics to advanced."},
+    {name:"JavaScript Programming",category:"Programming",icon:"🟨",desc:"Create interactive applications with JavaScript."},
+    {name:"Data Structures",category:"Programming",icon:"📚",desc:"Understand arrays, stacks, queues and trees."},
+    {name:"Algorithms",category:"Programming",icon:"🧠",desc:"Learn problem-solving and algorithm design."},
+    {name:"Object Oriented Programming",category:"Programming",icon:"🧩",desc:"Understand classes, objects and inheritance."},
+    {name:"Competitive Programming",category:"Programming",icon:"🏆",desc:"Improve coding and logical problem-solving skills."},
+    {name:"Advanced Java",category:"Programming",icon:"☕",desc:"Explore collections, multithreading and advanced Java."},
+
+    // WEB DEVELOPMENT (11-20)
+    {name:"HTML5",category:"Web Development",icon:"🌐",desc:"Learn the structure of modern web pages."},
+    {name:"CSS3",category:"Web Development",icon:"🎨",desc:"Design attractive and responsive websites."},
+    {name:"Bootstrap",category:"Web Development",icon:"🅱️",desc:"Build responsive layouts quickly."},
+    {name:"React JS",category:"Web Development",icon:"⚛️",desc:"Build modern user interfaces using React."},
+    {name:"Node.js",category:"Web Development",icon:"🟢",desc:"Create server-side applications with JavaScript."},
+    {name:"Express.js",category:"Web Development",icon:"🚀",desc:"Develop backend APIs using Express."},
+    {name:"PHP Development",category:"Web Development",icon:"🐘",desc:"Learn server-side web development."},
+    {name:"Full Stack Development",category:"Web Development",icon:"💻",desc:"Learn frontend and backend development."},
+    {name:"UI/UX Design",category:"Web Development",icon:"🖌️",desc:"Design user-friendly digital experiences."},
+    {name:"Responsive Web Design",category:"Web Development",icon:"📱",desc:"Create websites for mobile and desktop."},
+
+    // AI & DATA SCIENCE (21-30)
+    {name:"Artificial Intelligence",category:"AI & Data Science",icon:"🤖",desc:"Explore intelligent systems and AI concepts."},
+    {name:"Machine Learning",category:"AI & Data Science",icon:"🧠",desc:"Build predictive models using data."},
+    {name:"Deep Learning",category:"AI & Data Science",icon:"🔬",desc:"Learn neural networks and deep learning."},
+    {name:"Data Science",category:"AI & Data Science",icon:"📊",desc:"Analyze data and discover useful insights."},
+    {name:"Data Analytics",category:"AI & Data Science",icon:"📈",desc:"Turn raw data into meaningful information."},
+    {name:"Natural Language Processing",category:"AI & Data Science",icon:"💬",desc:"Teach computers to understand human language."},
+    {name:"Computer Vision",category:"AI & Data Science",icon:"👁️",desc:"Build applications that understand images."},
+    {name:"Generative AI",category:"AI & Data Science",icon:"✨",desc:"Explore modern AI content generation."},
+    {name:"Neural Networks",category:"AI & Data Science",icon:"🔗",desc:"Understand artificial neural network models."},
+    {name:"Big Data Analytics",category:"AI & Data Science",icon:"📉",desc:"Process and analyze large datasets."},
+
+    // DATABASE (31-36)
+    {name:"SQL",category:"Database",icon:"🗄️",desc:"Learn queries and relational database operations."},
+    {name:"MySQL",category:"Database",icon:"🐬",desc:"Manage data using MySQL databases."},
+    {name:"MongoDB",category:"Database",icon:"🍃",desc:"Work with NoSQL document databases."},
+    {name:"Database Management System",category:"Database",icon:"💾",desc:"Understand database concepts and design."},
+    {name:"Oracle Database",category:"Database",icon:"🔴",desc:"Learn enterprise database management."},
+    {name:"Database Administration",category:"Database",icon:"🛠️",desc:"Learn database backup, security and maintenance."},
+
+    // NETWORKING (37-43)
+    {name:"Computer Networks",category:"Networking",icon:"🌐",desc:"Understand how computers communicate."},
+    {name:"Cyber Security",category:"Networking",icon:"🔐",desc:"Learn digital security and protection concepts."},
+    {name:"Ethical Hacking",category:"Networking",icon:"🛡️",desc:"Study authorized security testing techniques."},
+    {name:"Cloud Computing",category:"Networking",icon:"☁️",desc:"Explore cloud platforms and services."},
+    {name:"Linux Administration",category:"Networking",icon:"🐧",desc:"Learn Linux commands and system management."},
+    {name:"Computer Architecture",category:"Networking",icon:"🖥️",desc:"Understand computer hardware and organization."},
+    {name:"Operating Systems",category:"Networking",icon:"⚙️",desc:"Study processes, memory and system management."},
+
+    // OTHER (44-50)
+    {name:"Software Engineering",category:"Other",icon:"📋",desc:"Learn software development processes and methods."},
+    {name:"DevOps",category:"Other",icon:"🔄",desc:"Explore development and deployment workflows."},
+    {name:"Mobile App Development",category:"Other",icon:"📲",desc:"Build applications for mobile devices."},
+    {name:"Internet of Things",category:"Other",icon:"📡",desc:"Connect smart devices using IoT technology."},
+    {name:"Blockchain Technology",category:"Other",icon:"⛓️",desc:"Understand decentralized digital systems."},
+    {name:"Game Development",category:"Other",icon:"🎮",desc:"Learn how to create interactive games."},
+    {name:"Computer Graphics",category:"Other",icon:"🖼️",desc:"Explore digital images, graphics and animation."}
+];
+
+const grid = document.getElementById("courseGrid");
+const search = document.getElementById("courseSearch");
+const count = document.getElementById("courseCount");
+const noResults = document.getElementById("noResults");
+
+let selectedCategory = "All";
+
+function displayCourses() {
+    const searchText = search.value.toLowerCase().trim();
+
+    const filtered = courses.filter(course => {
+        const matchesSearch =
+            course.name.toLowerCase().includes(searchText) ||
+            course.desc.toLowerCase().includes(searchText) ||
+            course.category.toLowerCase().includes(searchText);
+
+        const matchesCategory =
+            selectedCategory === "All" ||
+            course.category === selectedCategory;
+
+        return matchesSearch && matchesCategory;
+    });
+
+    grid.innerHTML = "";
+
+    filtered.forEach((course,index) => {
+        const card = document.createElement("div");
+        card.className = "course-card";
+        card.style.animationDelay = (index % 12) * 0.04 + "s";
+
+        const icon = document.createElement("div");
+        icon.className = "course-icon";
+        icon.textContent = course.icon;
+
+        const heading = document.createElement("h3");
+        heading.textContent = course.name;
+
+        const description = document.createElement("p");
+        description.textContent = course.desc;
+
+        const category = document.createElement("span");
+        category.className = "course-category";
+        category.textContent = course.category;
+
+        card.append(icon,heading,description,category);
+        grid.appendChild(card);
+    });
+
+    count.textContent = `Showing ${filtered.length} of ${courses.length} courses`;
+
+    noResults.style.display = filtered.length === 0 ? "block" : "none";
+}
+
+search.addEventListener("input",displayCourses);
+
+document.querySelectorAll(".filter-btn").forEach(button => {
+    button.addEventListener("click",() => {
+        document.querySelector(".filter-btn.active")?.classList.remove("active");
+        button.classList.add("active");
+
+        selectedCategory = button.dataset.category;
+        displayCourses();
+    });
+});
+
+displayCourses();
+
+/* BACK TO TOP */
+
+const topButton = document.getElementById("topButton");
+
+topButton.addEventListener("click",() => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+window.addEventListener("scroll",() => {
+    topButton.style.display = window.scrollY > 300 ? "block" : "none";
+});
+
+topButton.style.display = "none";
+</script>
+
+</body>
+</html>

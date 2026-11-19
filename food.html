@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Corner | Taste That Makes You Happy</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fffaf5;
+            color: #222;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 18px 7%;
+            background: rgba(255,255,255,0.96);
+
+            box-shadow: 0 3px 20px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 25px;
+            font-weight: 800;
+            color: #e85d04;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #fff0e2;
+            border-radius: 12px;
+
+            font-size: 23px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e85d04;
+        }
+
+        .nav-btn {
+            background: #e85d04;
+            color: white !important;
+
+            padding: 11px 20px;
+            border-radius: 25px;
+        }
+
+        .nav-btn:hover {
+            background: #c94e00;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 650px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 70px 7%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(20,10,5,0.82),
+                    rgba(20,10,5,0.35)
+                ),
+                url("https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            color: white;
+        }
+
+        .small-title {
+            color: #ffb347;
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #ff9f1c;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #f2f2f2;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            display: inline-block;
+            padding: 15px 28px;
+
+            background: #e85d04;
+            color: white;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .primary-btn:hover {
+            background: #ff7b16;
+            transform: translateY(-3px);
+        }
+
+        .secondary-btn {
+            display: inline-block;
+            padding: 15px 28px;
+
+            border: 1px solid white;
+            color: white;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .secondary-btn:hover {
+            background: white;
+            color: #333;
+        }
+
+        /* ================= COMMON ================= */
+
+        .section {
+            padding: 90px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title small {
+            color: #e85d04;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-top: 10px;
+        }
+
+        .section-title p {
+            color: #777;
+            margin-top: 12px;
+        }
+
+        /* ================= CATEGORIES ================= */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .category {
+            background: white;
+            padding: 28px 20px;
+            text-align: center;
+
+            border-radius: 18px;
+
+            box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .category-icon {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        .category h3 {
+            font-size: 18px;
+        }
+
+        .category p {
+            color: #888;
+            font-size: 14px;
+            margin-top: 7px;
+        }
+
+        /* ================= MENU ================= */
+
+        .menu-section {
+            background: #fff4e8;
+        }
+
+        .menu-grid {
+            max-width: 1150px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+
+            box-shadow: 0 6px 25px rgba(0,0,0,0.07);
+
+            transition: 0.3s;
+        }
+
+        .food-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .food-image {
+            height: 210px;
+            overflow: hidden;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            transition: 0.5s;
+        }
+
+        .food-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .food-info {
+            padding: 22px;
+        }
+
+        .food-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .food-top h3 {
+            font-size: 20px;
+        }
+
+        .price {
+            color: #e85d04;
+            font-weight: bold;
+            font-size: 19px;
+        }
+
+        .food-info p {
+            color: #777;
+            line-height: 1.5;
+            margin: 10px 0 18px;
+            font-size: 14px;
+        }
+
+        .order-btn {
+            display: inline-block;
+
+            padding: 9px 18px;
+
+            border: 1px solid #e85d04;
+            border-radius: 20px;
+
+            color: #e85d04;
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .order-btn:hover {
+            background: #e85d04;
+            color: white;
+        }
+
+        /* ================= OFFER ================= */
+
+        .offer {
+            margin: 80px 7%;
+
+            min-height: 300px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 50px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(30,10,0,0.85),
+                    rgba(30,10,0,0.3)
+                ),
+                url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+        }
+
+        .offer-content {
+            max-width: 550px;
+        }
+
+        .offer-content small {
+            color: #ffb347;
+            font-weight: bold;
+        }
+
+        .offer-content h2 {
+            font-size: 38px;
+            margin: 12px 0;
+        }
+
+        .offer-content p {
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* ================= GALLERY ================= */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 220px;
+
+            object-fit: cover;
+
+            border-radius: 15px;
+
+            transition: 0.4s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 25px;
+        }
+
+        .about-content small {
+            color: #e85d04;
+            font-weight: bold;
+        }
+
+        .about-content h2 {
+            font-size: 42px;
+            margin: 15px 0 20px;
+        }
+
+        .about-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .feature {
+            padding: 15px;
+            background: #fff4e8;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        /* ================= HOURS ================= */
+
+        .hours {
+            background: #e85d04;
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hours h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .hours p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .hours strong {
+            font-size: 25px;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact-container {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 30px;
+            text-align: center;
+
+            border-radius: 18px;
+
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+        }
+
+        .contact-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: #777;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #1e1e1e;
+            color: white;
+            padding: 45px 7%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            color: #ff9f1c;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .footer-content p {
+            color: #aaa;
+            max-width: 400px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid #333;
+            margin-top: 30px;
+            padding-top: 20px;
+            color: #888;
+            text-align: center;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 600px;
+                padding: 50px 6%;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 65px 6%;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .categories,
+            .menu-grid,
+            .gallery,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .offer {
+                margin: 50px 5%;
+                padding: 35px 25px;
+            }
+
+            .offer-content h2 {
+                font-size: 30px;
+            }
+
+            .about-content h2 {
+                font-size: 32px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery img {
+                height: 250px;
+            }
+        }
+        .print-header {
+    display: none;
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+
+    .print-header {
+        display: block;
+        text-align: center;
+        margin-bottom: 25px;
+        color: black;
+    }
+
+    header nav,
+    .nav-btn {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="print-header">
+    <h2>FOOD CORNER</h2>
+    <p>Website Design & Development Project</p>
+    <hr>
+    <p><b>Submitted By:</b> Rahul Kumar Sharma</p>
+    <p><b>Project:</b> Food Corner Restaurant Website</p>
+    <p><b>Technology:</b> HTML, CSS, JavaScript</p>
+    <hr>
+</div>
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            <div class="logo-icon">🍴</div>
+            Food Corner
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+
+            <a href="#menu" class="nav-btn">
+                Order Now
+            </a>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                ✨ FRESH • TASTY • HYGIENIC
+            </div>
+
+            <h1>
+                Good Food.
+                <span>Good Mood.</span>
+            </h1>
+
+            <p>
+                Discover delicious food made with fresh ingredients,
+                authentic flavors and a lot of love.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#menu" class="primary-btn">
+                    Explore Menu →
+                </a>
+
+                <a href="#about" class="secondary-btn">
+                    About Us
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <small>WHAT WE SERVE</small>
+
+            <h2>Explore Our Categories</h2>
+
+            <p>
+                Something delicious for everyone
+            </p>
+
+        </div>
+
+
+        <div class="categories">
+
+            <div class="category">
+                <div class="category-icon">🍕</div>
+                <h3>Pizza</h3>
+                <p>Fresh & Cheesy</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">🍔</div>
+                <h3>Burgers</h3>
+                <p>Juicy & Delicious</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">🍛</div>
+                <h3>Indian Food</h3>
+                <p>Authentic Taste</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">🥤</div>
+                <h3>Beverages</h3>
+                <p>Cool & Refreshing</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MENU -->
+
+    <section id="menu" class="section menu-section">
+
+        <div class="section-title">
+
+            <small>OUR SPECIAL MENU</small>
+
+            <h2>Popular Dishes</h2>
+
+            <p>
+                Customer favorites made fresh for you
+            </p>
+
+        </div>
+
+
+        <div class="menu-grid">
+
+            <!-- Pizza -->
+
+            <div class="food-card">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80"
+                        alt="Pizza"
+                    >
+
+                </div>
+
+                <div class="food-info">
+
+                    <div class="food-top">
+
+                        <h3>Classic Pizza</h3>
+
+                        <span class="price">₹250</span>
+
+                    </div>
+
+                    <p>
+                        Crispy crust topped with fresh vegetables,
+                        cheese and delicious herbs.
+                    </p>
+
+                    <a href="#" class="order-btn">
+                        Add to Order
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Paneer -->
+
+            <div class="food-card">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=800&q=80"
+                        alt="Paneer Tikka"
+                    >
+
+                </div>
+
+                <div class="food-info">
+
+                    <div class="food-top">
+
+                        <h3>Paneer Tikka</h3>
+
+                        <span class="price">₹180</span>
+
+                    </div>
+
+                    <p>
+                        Soft paneer grilled with Indian spices
+                        and fresh vegetables.
+                    </p>
+
+                    <a href="#" class="order-btn">
+                        Add to Order
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Burger -->
+
+            <div class="food-card">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
+                        alt="Veg Burger"
+                    >
+
+                </div>
+
+                <div class="food-info">
+
+                    <div class="food-top">
+
+                        <h3>Veg Burger</h3>
+
+                        <span class="price">₹120</span>
+
+                    </div>
+
+                    <p>
+                        Crispy vegetable patty with fresh lettuce,
+                        cheese and special sauce.
+                    </p>
+
+                    <a href="#" class="order-btn">
+                        Add to Order
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Coffee -->
+
+            <div class="food-card">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80"
+                        alt="Cold Coffee"
+                    >
+
+                </div>
+
+                <div class="food-info">
+
+                    <div class="food-top">
+
+                        <h3>Cold Coffee</h3>
+
+                        <span class="price">₹100</span>
+
+                    </div>
+
+                    <p>
+                        Creamy chilled coffee blended with
+                        milk and rich chocolate flavor.
+                    </p>
+
+                    <a href="#" class="order-btn">
+                        Add to Order
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Pasta -->
+
+            <div class="food-card">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=80"
+                        alt="Pasta"
+                    >
+
+                </div>
+
+                <div class="food-info">
+
+                    <div class="food-top">
+
+                        <h3>Italian Pasta</h3>
+
+                        <span class="price">₹220</span>
+
+                    </div>
+
+                    <p>
+                        Creamy pasta prepared with fresh vegetables
+                        and Italian herbs.
+                    </p>
+
+                    <a href="#" class="order-btn">
+                        Add to Order
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Fries -->
+
+            <div class="food-card">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=80"
+                        alt="French Fries"
+                    >
+
+                </div>
+
+                <div class="food-info">
+
+                    <div class="food-top">
+
+                        <h3>French Fries</h3>
+
+                        <span class="price">₹90</span>
+
+                    </div>
+
+                    <p>
+                        Crispy golden fries served hot with
+                        our special dip.
+                    </p>
+
+                    <a href="#" class="order-btn">
+                        Add to Order
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- OFFER -->
+
+    <section class="offer">
+
+        <div class="offer-content">
+
+            <small>🔥 TODAY'S SPECIAL OFFER</small>
+
+            <h2>
+                Get 20% Off On Your First Order
+            </h2>
+
+            <p>
+                Enjoy your favorite dishes with an exclusive
+                discount. Fresh food, great taste and amazing moments.
+            </p>
+
+            <a href="#menu" class="primary-btn">
+                Order Now
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about" class="section">
+
+        <div class="about">
+
+            <div class="about-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1000&q=85"
+                    alt="Restaurant"
+                >
+
+            </div>
+
+
+            <div class="about-content">
+
+                <small>ABOUT FOOD CORNER</small>
+
+                <h2>
+                    We Serve Happiness
+                    On Every Plate
+                </h2>
+
+                <p>
+                    Food Corner is a place where great food,
+                    friendly service and happy moments come together.
+                </p>
+
+                <p>
+                    We use fresh ingredients and prepare every dish
+                    with care to give our customers a memorable
+                    dining experience.
+                </p>
+
+
+                <div class="features">
+
+                    <div class="feature">
+                        ✓ Fresh Ingredients
+                    </div>
+
+                    <div class="feature">
+                        ✓ Hygienic Kitchen
+                    </div>
+
+                    <div class="feature">
+                        ✓ Fast Service
+                    </div>
+
+                    <div class="feature">
+                        ✓ Great Taste
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALLERY -->
+
+    <section id="gallery" class="section">
+
+        <div class="section-title">
+
+            <small>FOOD CORNER</small>
+
+            <h2>Our Gallery</h2>
+
+            <p>
+                A glimpse of our delicious food
+            </p>
+
+        </div>
+
+
+        <div class="gallery">
+
+            <img
+                src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80"
+                alt="Pizza"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
+                alt="Burger"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=800&q=80"
+                alt="Indian Food"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80"
+                alt="Coffee"
+            >
+
+        </div>
+
+    </section>
+
+
+    <!-- HOURS -->
+
+    <section class="hours">
+
+        <h2>Visit Us Today 🍽️</h2>
+
+        <p>
+            Monday - Sunday
+        </p>
+
+        <strong>
+            11:00 AM - 10:00 PM
+        </strong>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="section">
+
+        <div class="section-title">
+
+            <small>GET IN TOUCH</small>
+
+            <h2>Contact Us</h2>
+
+        </div>
+
+
+        <div class="contact-container">
+
+            <div class="contact-card">
+
+                <div class="contact-icon">📍</div>
+
+                <h3>Visit Us</h3>
+
+                <p>
+                    Jaipur, Rajasthan
+                </p>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="contact-icon">📞</div>
+
+                <h3>Call Us</h3>
+
+                <p>
+                    +91 98765 43210
+                </p>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="contact-icon">✉️</div>
+
+                <h3>Email Us</h3>
+
+                <p>
+                    foodcorner@example.com
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+
+                <div class="footer-logo">
+                    🍴 Food Corner
+                </div>
+
+                <p>
+                    Delicious food, great taste and happy moments.
+                    We make every meal special.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Food Corner Restaurant.
+            All Rights Reserved.
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

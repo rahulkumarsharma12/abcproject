@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABC College of Technology</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    color: #172338;
+    line-height: 1.6;
+}
+
+header {
+    background: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 10px #ddd;
+    z-index: 10;
+}
+
+.logo {
+    color: #10264b;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav a {
+    text-decoration: none;
+    color: #10264b;
+    margin: 0 12px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #e8a92e;
+}
+
+.btn {
+    background: #f3b544;
+    color: #10264b;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hero {
+    min-height: 550px;
+    background: linear-gradient(#10264bcc,#10264bcc),
+    url("https://images.unsplash.com/photo-1562774053-701939374585?w=1600");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 7%;
+    color: white;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    line-height: 1.2;
+    margin: 15px 0;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.stats {
+    background: #10264b;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 5%;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stats h2 {
+    color: #f3b544;
+    font-size: 30px;
+}
+
+section {
+    padding: 75px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    color: #10264b;
+    font-size: 35px;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.about img {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    color: #10264b;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.courses {
+    background: #f4f7fb;
+}
+
+.course-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.course-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px #0000000d;
+    transition: 0.3s;
+}
+
+.course-card:hover {
+    transform: translateY(-7px);
+}
+
+.course-card h3 {
+    color: #10264b;
+    margin: 12px 0;
+}
+
+.course-card p {
+    color: #64748b;
+}
+
+.icon {
+    font-size: 35px;
+}
+
+.campus {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.campus img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.admission {
+    background: #10264b;
+    color: white;
+    text-align: center;
+}
+
+.admission h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+form {
+    background: white;
+    padding: 30px;
+    max-width: 500px;
+    margin: 30px auto 0;
+    border-radius: 10px;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+}
+
+#message {
+    color: green;
+    margin-top: 12px;
+}
+
+.contact {
+    text-align: center;
+}
+
+footer {
+    background: #0b1931;
+    color: white;
+    padding: 35px 7%;
+    text-align: center;
+}
+
+@media(max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav a {
+        margin: 5px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .about {
+        flex-direction: column;
+    }
+
+    .about img {
+        width: 100%;
+    }
+
+    .course-container,
+    .campus {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">ABC COLLEGE</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="#campus">Campus</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <a href="#admission" class="btn">Apply Now</a>
+</header>
+
+<!-- HOME -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h4>WELCOME TO ABC COLLEGE</h4>
+        <h1>Build Your Future With Technology</h1>
+        <p>
+            Discover your potential, develop new skills
+            and prepare for a successful future.
+        </p>
+        <a href="#courses" class="btn">Explore Courses</a>
+    </div>
+</section>
+
+<!-- STATISTICS -->
+<div class="stats">
+    <div>
+        <h2>20+</h2>
+        <p>Years of Experience</p>
+    </div>
+
+    <div>
+        <h2>5000+</h2>
+        <p>Students</p>
+    </div>
+
+    <div>
+        <h2>30+</h2>
+        <p>Expert Faculty</p>
+    </div>
+
+    <div>
+        <h2>15+</h2>
+        <p>Programs</p>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="about">
+
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1000"
+        alt="College Campus">
+
+        <div class="about-text">
+            <h2>About Our College</h2>
+
+            <p>
+                ABC College of Technology is dedicated
+                to providing quality education and
+                developing future professionals.
+            </p>
+
+            <br>
+
+            <p>
+                We focus on practical learning,
+                innovation, technology and career growth.
+            </p>
+
+            <br>
+
+            <a href="#contact" class="btn">Learn More</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- COURSES -->
+<section class="courses" id="courses">
+
+    <div class="section-title">
+        <h2>Our Popular Courses</h2>
+        <p>Choose the right course for your future.</p>
+    </div>
+
+    <div class="course-container">
+
+        <div class="course-card">
+            <div class="icon">💻</div>
+            <h3>Computer Science</h3>
+            <p>Learn programming and software development.</p>
+        </div>
+
+        <div class="course-card">
+            <div class="icon">⚙️</div>
+            <h3>Mechanical Engineering</h3>
+            <p>Explore engineering and machine technology.</p>
+        </div>
+
+        <div class="course-card">
+            <div class="icon">🔌</div>
+            <h3>Electrical Engineering</h3>
+            <p>Study electrical systems and circuits.</p>
+        </div>
+
+        <div class="course-card">
+            <div class="icon">🏗️</div>
+            <h3>Civil Engineering</h3>
+            <p>Learn construction and infrastructure design.</p>
+        </div>
+
+        <div class="course-card">
+            <div class="icon">📊</div>
+            <h3>Information Technology</h3>
+            <p>Develop skills in digital technologies.</p>
+        </div>
+
+        <div class="course-card">
+            <div class="icon">🤖</div>
+            <h3>Artificial Intelligence</h3>
+            <p>Discover AI and machine learning.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CAMPUS -->
+<section id="campus">
+
+    <div class="section-title">
+        <h2>Our Campus</h2>
+        <p>Explore our learning environment.</p>
+    </div>
+
+    <div class="campus">
+        <img src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=700" alt="Campus">
+        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=700" alt="Classroom">
+        <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=700" alt="Library">
+    </div>
+
+</section>
+
+<!-- ADMISSION -->
+<section class="admission" id="admission">
+
+    <h2>Admissions Open</h2>
+    <p>Start your journey with ABC College of Technology.</p>
+
+    <form id="admissionForm">
+
+        <input type="text" id="name"
+        placeholder="Your Full Name" required>
+
+        <input type="email" id="email"
+        placeholder="Your Email" required>
+
+        <input type="tel" id="phone"
+        placeholder="Phone Number" required>
+
+        <select id="course" required>
+            <option value="">Select Course</option>
+            <option>Computer Science</option>
+            <option>Mechanical Engineering</option>
+            <option>Electrical Engineering</option>
+            <option>Civil Engineering</option>
+            <option>Information Technology</option>
+            <option>Artificial Intelligence</option>
+        </select>
+
+        <textarea placeholder="Your Message"></textarea>
+
+        <button type="submit" class="btn">
+            Submit Application
+        </button>
+
+        <p id="message"></p>
+
+    </form>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <div class="section-title">
+        <h2>Contact Us</h2>
+    </div>
+
+    <p>📍 123 College Road, Your City, India</p>
+    <p>📧 info@abccollege.edu</p>
+    <p>📞 +91 98765 43210</p>
+
+</section>
+
+<footer>
+    <h3>ABC College of Technology</h3>
+    <p>Learning Today. Leading Tomorrow.</p>
+    <br>
+    <p>© 2026 ABC College. All Rights Reserved.</p>
+</footer>
+
+<script>
+document.getElementById("admissionForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+
+    document.getElementById("message").innerText =
+        "Thank you " + name +
+        "! Your enquiry has been submitted in this demo.";
+
+    this.reset();
+
+});
+</script>
+
+</body>
+</html>
